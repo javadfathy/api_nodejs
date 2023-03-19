@@ -5,11 +5,12 @@ const getAllProducts = (req, res, next) => {
 }
 
 const getProduct = (req, res, next) => {
+  
   const product = products.find((item) => {
     return item._id === req.params.id
   })
-
   res.json(product)
+  
 }
 
 exports.getAllProducts = getAllProducts
