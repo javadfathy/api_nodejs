@@ -47,9 +47,26 @@ module.exports.addProduct = (req, res, next) => {
         })
 }
 
+// update product 
+module.exports.updateProduct = (req, res, next) => {
+    const productId = req.params.id
+    const productUpdated = { title: req.body.title, price: req.body.price }
+
+    Product.findOneAndUpdate({ _id: productId }, productUpdated)
+        .then(result => {
+            res.status(200).json({
+                msg: 'product updated'
+            })
+        }).catch(err => {
+            res.status(200).json({
+                msg: 'Internal Server Error',
+                err: err
+            })
+        })
+}
+
 // delete product
 module.exports.deleteProduct = (req, res, next) => {
-    console.log('hiiiiiiiiii')
     const id = req.params.id
     Product.deleteOne({ _id: id })
         .then(result => {

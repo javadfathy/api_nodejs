@@ -11,6 +11,9 @@ router.get('/post/:id', postController.post)
 // post add post
 router.post('/post', postController.addPost)
 
+// update post
+router.post('/updatePost/:id', postController.updatePost)
+
 // delete post
 router.delete('/post/:id', postController.deletePost)
 

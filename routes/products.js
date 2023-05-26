@@ -12,6 +12,9 @@ router.get('/product/:id', productController.product)
 // post add product
 router.post('/product', productController.addProduct)
 
+// update product
+router.post('/updateProduct/:id', productController.updateProduct)
+
 // delete product
 router.delete('/product/:id', productController.deleteProduct)
 
