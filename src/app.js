@@ -9,6 +9,9 @@ const app = express()
 
 mongoose.connect('mongodb://127.0.0.1:27017/apiNode', {useNewUrlParser: true})
 
+// for see images by browser
+app.use('/uploads', express.static('uploads'))
+
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 

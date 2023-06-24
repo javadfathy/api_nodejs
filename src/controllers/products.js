@@ -32,12 +32,15 @@ module.exports.product = (req, res, next) => {
 module.exports.addProduct = (req, res, next) => {
     const product = new Product({
         title: req.body.title,
-        price: req.body.price
+        price: req.body.price,
+        productImage: req.file.path
     })
+    console.log(product)
     product.save()
         .then(result => {
             res.status(200).json({
-                msg: "Product Created"
+                msg: "Product Created",
+                result: result
             })
         }).catch(err => {
             res.status(500).json({
