@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const postController = require('../controllers/posts')
+const checkAuth = require('../middleware/check-auth')
 
 // get all posts
 router.get('/posts', postController.posts)
@@ -9,12 +10,12 @@ router.get('/posts', postController.posts)
 router.get('/post/:id', postController.post)
 
 // post add post
-router.post('/post', postController.addPost)
+router.post('/post', checkAuth, postController.addPost)
 
 // update post
-router.post('/updatePost/:id', postController.updatePost)
+router.post('/updatePost/:id', checkAuth, postController.updatePost)
 
 // delete post
-router.delete('/post/:id', postController.deletePost)
+router.delete('/post/:id', checkAuth, postController.deletePost)
 
 module.exports = router
